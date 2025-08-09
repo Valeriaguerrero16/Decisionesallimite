@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decisiones al Límite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .avatar-isabel {
+      background: radial-gradient(circle at 30% 30%, #64ffda, #1a1a40);
+      border: 3px solid #64ffda;
+    }
+    .avatar-chava {
+      background: radial-gradient(circle at 30% 30%, #ff61a6, #1a1a40);
+      border: 3px solid #ff61a6;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+
+  <!-- Selección de personaje -->
+  <section id="choose" class="max-w-lg w-full">
+    <h1 class="text-4xl font-bold mb-6 text-center text-cyan-300">DECISIONES AL LÍMITE</h1>
+    <p class="text-center mb-8 text-pink-300">Elige tu personaje y enfréntate a decisiones extremas</p>
+    <div class="grid grid-cols-2 gap-6">
+      <button class="select-char flex flex-col items-center gap-2 p-4 rounded-xl hover:scale-105 transition-transform avatar-isabel" data-char="isabel">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold text-black">👽</div>
+        <span class="text-sm font-semibold">Isabel</span>
+        <p class="text-xs text-center text-cyan-200">Alienígena astuta pero impulsiva</p>
+      </button>
+      <button class="select-char flex flex-col items-center gap-2 p-4 rounded-xl hover:scale-105 transition-transform avatar-chava" data-char="chava">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold text-black">🕶️</div>
+        <span class="text-sm font-semibold">Chava</span>
+        <p class="text-xs text-center text-pink-200">Libre y nunca sigue las indicaciones</p>
+      </button>
+    </div>
+  </section>
+
+  <!-- Juego -->
+  <section id="game" class="hidden max-w-lg w-full">
+    <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center gap-3">
+        <div id="avatar" class="w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold"></div>
+        <div>
+          <h2 id="charName" class="font-semibold text-lg"></h2>
+          <p>Puntos de juicio: <span id="score" class="text-cyan-300 font-bold">0</span></p>
+        </div>
+      </div>
+      <button id="restart" class="px-3 py-1 rounded bg-pink-500 hover:bg-pink-600 transition">Reiniciar</button>
+    </div>
+    <h3 id="sceneTitle" class="text-2xl font-bold mb-4"></h3>
+    <p id="sceneText" class="mb-6"></p>
+    <div id="options" class="flex flex-col gap-3"></div>
+  </section>
+
+  <!-- Resultado -->
+  <section id="result" class="hidden max-w-lg w-full text-center">
+    <h2 class="text-3xl font-bold mb-4 text-cyan-300">Resultado Final</h2>
+    <p id="resultText" class="mb-2"></p>
+    <p id="reflection" class="mb-6"></p>
+    <button id="playAgain" class="px-4 py-2 bg-pink-500 rounded hover:bg-pink-600 transition">Jugar otra vez</button>
+  </section>
+
+  <script src="game.js"></script>
+</body>
+</html>
+
