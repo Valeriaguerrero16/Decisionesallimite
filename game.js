@@ -22,36 +22,61 @@ document.addEventListener("DOMContentLoaded", () => {
   let character = null;
 
   const scenes = [
-    {
-      title: "Atajo sospechoso",
-      text: "Ves un callejón iluminado por luces moradas. Un tipo extraño te invita a seguirlo.",
-      options: [
-        { text: "Seguirlo", effect: -1, next: 1 },
-        { text: "Ignorarlo y buscar otra ruta", effect: 1, next: 1 }
-      ]
-    },
-    {
-      title: "Puente inestable",
-      text: "Un puente colgante parece ser la ruta más corta, pero cruje peligrosamente.",
-      options: [
-        { text: "Cruzarlo", effect: -1, next: 2 },
-        { text: "Rodear por el bosque", effect: 1, next: 2 }
-      ]
-    },
-    {
-      title: "Extraña máquina",
-      text: "Encuentras una máquina brillante con botones y una palanca roja que dice 'NO TOCAR'.",
-      options: [
-        { text: "Tirar de la palanca", effect: -1, next: 3 },
-        { text: "Observar y analizar antes de tocar", effect: 1, next: 3 }
-      ]
-    },
-    {
-      title: "Destino final",
-      text: "Has llegado al final de tu aventura. El viaje fue intenso y revelador.",
-      options: []
-    }
-  ];
+  {
+    title: "Atajo sospechoso",
+    text: "Ves un callejón iluminado por luces moradas. Un tipo extraño te invita a seguirlo.",
+    options: [
+      { text: "Seguirlo", effect: -1, next: 1 },
+      { text: "Ignorarlo y buscar otra ruta", effect: 1, next: 1 }
+    ]
+  },
+  {
+    title: "Puente inestable",
+    text: "Un puente colgante parece ser la ruta más corta, pero cruje peligrosamente.",
+    options: [
+      { text: "Cruzarlo", effect: -1, next: 2 },
+      { text: "Rodear por el bosque", effect: 1, next: 2 }
+    ]
+  },
+  {
+    title: "Extraña máquina",
+    text: "Encuentras una máquina brillante con botones y una palanca roja que dice 'NO TOCAR'.",
+    options: [
+      { text: "Tirar de la palanca", effect: -1, next: 3 },
+      { text: "Observar y analizar antes de tocar", effect: 1, next: 3 }
+    ]
+  },
+  {
+    title: "Encuentro misterioso",
+    text: "Una sombra se mueve entre los árboles. ¿Quieres acercarte o mantener distancia?",
+    options: [
+      { text: "Acercarme", effect: -1, next: 4 },
+      { text: "Mantener distancia", effect: 1, next: 4 }
+    ]
+  },
+  {
+    title: "Decisión crucial",
+    text: "Encuentras una bifurcación en el camino: ¿izquierda o derecha?",
+    options: [
+      { text: "Izquierda", effect: 1, next: 5 },
+      { text: "Derecha", effect: -1, next: 5 }
+    ]
+  },
+  {
+    title: "Destino final",
+    text: "Has llegado al final de tu aventura. El viaje fue intenso y revelador.",
+    options: []
+  },
+  {
+    title: "Reflexión final",
+    text: "Un momento para pensar en las decisiones tomadas durante el viaje.",
+    options: [
+      { text: "Aceptar el resultado", effect: 0, next: 5 }
+    ]
+  }
+];
+
+
 
   const reflections = {
     high: "Tu juicio fue excelente: actuaste con prudencia y astucia.",
@@ -59,27 +84,36 @@ document.addEventListener("DOMContentLoaded", () => {
     low: "Fuiste demasiado arriesgado: a veces la adrenalina puede costar caro."
   };
 
-  document.querySelectorAll(".select-char").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const charType = btn.dataset.char;
-      character = charType;
-      if (charType === "isabel") {
-        avatar.textContent = "👽";
-        avatar.className = "w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold avatar-isabel";
-        charName.textContent = "Isabel - Alienígena astuta pero impulsiva";
-      } else {
-        avatar.textContent = "🕶️";
-        avatar.className = "w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold avatar-chava";
-        charName.textContent = "Chava - Libre y nunca sigue las indicaciones";
-      }
-      score = 0;
-      scoreElem.textContent = score;
-      currentSceneIndex = 0;
-      chooseSection.classList.add("hidden");
-      gameSection.classList.remove("hidden");
-      showScene();
-    });
+document.querySelectorAll(".select-char").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const charType = btn.dataset.char.trim().toLowerCase();
+    character = charType;
+
+    // Limpiar contenido anterior del avatar
+    avatar.innerHTML = "";
+
+    // Crear imagen para el avatar
+    const img = document.createElement("img");
+    img.className = "w-14 h-14 rounded-full object-cover border-2 border-cyan-400";
+
+    if (charType === "kitty") {
+      img.src = "KITTY.png"; // ruta de la imagen de Isabel
+      charName.textContent = "Kitty - Gatita astuta pero impulsiva";
+    } else {
+      img.src = "BATTT.png"; // ruta de la imagen de Chava
+      charName.textContent = "Batt - Libre, rompe las reglas y nunca sigue las indicaciones";
+    }
+
+    avatar.appendChild(img);
+
+    score = 0;
+    scoreElem.textContent = score;
+    currentSceneIndex = 0;
+    chooseSection.classList.add("hidden");
+    gameSection.classList.remove("hidden");
+    showScene();
   });
+});
 
   function showScene() {
     const scene = scenes[currentSceneIndex];
