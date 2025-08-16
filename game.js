@@ -23,43 +23,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const scenes = [
   {
-    title: "Atajo sospechoso",
-    text: "Ves un callejón iluminado por luces moradas. Un tipo extraño te invita a seguirlo.",
+  title: "Examen inesperado",
+  text: "El profesor anuncia un examen sorpresa de inglés. No estudiaste mucho ayer. ¿Qué haces?",
     options: [
-      { text: "Seguirlo", effect: -1, next: 1 },
-      { text: "Ignorarlo y buscar otra ruta", effect: 1, next: 1 }
+      { text: "Intentar resolver con lo que sabes", effect: 1, next: 1 },
+      { text: "Copiar de un compañero", effect: -1, next: 1 }
     ]
   },
   {
-    title: "Puente inestable",
-    text: "Un puente colgante parece ser la ruta más corta, pero cruje peligrosamente.",
-    options: [
-      { text: "Cruzarlo", effect: -1, next: 2 },
-      { text: "Rodear por el bosque", effect: 1, next: 2 }
+  title: "Trabajo en grupo",
+  text: "Tienes un proyecto en equipo. Tus compañeros no participan mucho. ¿Qué decides?",
+  options: [
+    { text: "Hacer tú solo el trabajo para que salga bien", effect: -1, next: 2 },
+    { text: "Motivar al grupo y repartir tareas", effect: 1, next: 2 }
     ]
   },
   {
-    title: "Extraña máquina",
-    text: "Encuentras una máquina brillante con botones y una palanca roja que dice 'NO TOCAR'.",
-    options: [
-      { text: "Tirar de la palanca", effect: -1, next: 3 },
-      { text: "Observar y analizar antes de tocar", effect: 1, next: 3 }
+  title: "Oportunidad de beca",
+  text: "Escuchas que habrá una beca para estudiantes con buen rendimiento y participación. ¿Qué haces?",
+  options: [
+    { text: "Anotarte y esforzarte más", effect: 1, next: 3 },
+    { text: "No intentarlo porque piensas que no ganarás", effect: -1, next: 3 }
     ]
   },
   {
-    title: "Encuentro misterioso",
-    text: "Una sombra se mueve entre los árboles. ¿Quieres acercarte o mantener distancia?",
-    options: [
-      { text: "Acercarme", effect: -1, next: 4 },
-      { text: "Mantener distancia", effect: 1, next: 4 }
+  title: "Amigos en clase",
+  text: "Un amigo te invita a no entrar a la última clase porque 'es aburrida'. ¿Qué haces?",
+  options: [
+    { text: "Ir a la clase de todos modos", effect: 1, next: 4 },
+    { text: "Salir con tu amigo", effect: -1, next: 4 }
     ]
   },
   {
-    title: "Decisión crucial",
-    text: "Encuentras una bifurcación en el camino: ¿izquierda o derecha?",
-    options: [
-      { text: "Izquierda", effect: 1, next: 5 },
-      { text: "Derecha", effect: -1, next: 5 }
+  title: "Presentación difícil",
+  text: "Te toca exponer en público y sientes nervios. ¿Cómo actúas?",
+  options: [
+    { text: "Respiras hondo y presentas lo mejor que puedas", effect: 1, next: 5 },
+    { text: "Evitas participar y dejas que otros hablen", effect: -1, next: 5 }
     ]
   },
   {
@@ -78,11 +78,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  const reflections = {
-    high: "Tu juicio fue excelente: actuaste con prudencia y astucia.",
-    mid: "Equilibraste riesgo y seguridad, aunque hubo momentos impulsivos.",
-    low: "Fuiste demasiado arriesgado: a veces la adrenalina puede costar caro."
-  };
+const reflections = {
+  high: "Tu juicio fue excelente: actuaste con prudencia y astucia. Demostraste que sabes pensar antes de decidir, y eso te da una gran ventaja para alcanzar tus metas.",
+  
+  mid: "Equilibraste riesgo y seguridad, aunque hubo momentos impulsivos. Tus decisiones muestran que tienes potencial, pero aún puedes aprender a reflexionar mejor antes de actuar.",
+  
+  low: "Fuiste demasiado arriesgado: a veces la adrenalina puede costar caro. No todo se resuelve con valentía; pensar en las consecuencias también es parte de crecer y mejorar."
+};
 
 document.querySelectorAll(".select-char").forEach(btn => {
   btn.addEventListener("click", () => {
