@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let score = 0;
   let character = null;
 
-  const scenes = [
+  
+    const scenes = [
   {
   title: "Examen inesperado",
   text: "El profesor anuncia un examen sorpresa de inglés. No estudiaste mucho ayer. ¿Qué haces?",
@@ -75,16 +76,18 @@ document.addEventListener("DOMContentLoaded", () => {
     ]
   }
 ];
-
-
-
+ 
+ 
+ 
 const reflections = {
   high: "Tu juicio fue excelente: actuaste con prudencia y astucia. Demostraste que sabes pensar antes de decidir, y eso te da una gran ventaja para alcanzar tus metas.",
-  
+ 
   mid: "Equilibraste riesgo y seguridad, aunque hubo momentos impulsivos. Tus decisiones muestran que tienes potencial, pero aún puedes aprender a reflexionar mejor antes de actuar.",
-  
+ 
   low: "Fuiste demasiado arriesgado: a veces la adrenalina puede costar caro. No todo se resuelve con valentía; pensar en las consecuencias también es parte de crecer y mejorar."
 };
+
+
 
 document.querySelectorAll(".select-char").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -99,10 +102,10 @@ document.querySelectorAll(".select-char").forEach(btn => {
     img.className = "w-14 h-14 rounded-full object-cover border-2 border-cyan-400";
 
     if (charType === "kitty") {
-      img.src = "KITTY.png"; // ruta de la imagen de Isabel
+      img.src = "KITTY.png"; 
       charName.textContent = "Kitty - Gatita astuta pero impulsiva";
     } else {
-      img.src = "BATTT.png"; // ruta de la imagen de Chava
+      img.src = "BATTT.png"; 
       charName.textContent = "Batt - Libre, rompe las reglas y nunca sigue las indicaciones";
     }
 
