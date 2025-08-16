@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,68 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Decisiones al Límite</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: #f0f0f0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    .avatar-isabel {
-      background: radial-gradient(circle at 30% 30%, #64ffda, #1a1a40);
-      border: 3px solid #64ffda;
-    }
-    .avatar-chava {
-      background: radial-gradient(circle at 30% 30%, #ff61a6, #1a1a40);
-      border: 3px solid #ff61a6;
-    }
-  </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-4">
+<body class="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-br from-purple-900 via-indigo-900 to-black text-gray-100 font-sans">
 
   <!-- Selección de personaje -->
-  <section id="choose" class="max-w-lg w-full">
-    <h1 class="text-4xl font-bold mb-6 text-center text-cyan-300">DECISIONES AL LÍMITE</h1>
-    <p class="text-center mb-8 text-pink-300">Elige tu personaje y enfréntate a decisiones extremas</p>
+  <section id="choose" class="max-w-lg w-full bg-white/5 backdrop-blur-lg p-8 rounded-2xl shadow-2xl border border-white/10">
+    <h1 class="text-5xl font-extrabold mb-6 text-center text-cyan-400 drop-shadow-lg">DECISIONES AL LÍMITE</h1>
+    <p class="text-center mb-8 text-pink-300 text-lg">Elige tu personaje y enfréntate a decisiones extremas</p>
+    
     <div class="grid grid-cols-2 gap-6">
-      <button class="select-char flex flex-col items-center gap-2 p-4 rounded-xl hover:scale-105 transition-transform avatar-isabel" data-char="Kitty">
-        <img src="KITTY.png" alt="Kitty" class="w-14 h-14 rounded-full object-cover border-2 border-cyan-400">
-        <span class="text-sm font-semibold">Kitty</span>
-        <p class="text-xs text-center text-cyan-200">Gatita astuta pero impulsiva</p>
+      <button class="select-char flex flex-col items-center gap-3 p-6 rounded-2xl bg-gradient-to-br from-cyan-400/30 to-cyan-700/30 border border-cyan-400/40 hover:scale-105 hover:shadow-xl hover:border-cyan-300 transition-all duration-300" data-char="Kitty">
+        <img src="KITTY.png" alt="Kitty" class="w-16 h-16 rounded-full object-cover border-2 border-cyan-400 shadow-md">
+        <span class="text-lg font-bold text-cyan-200">Kitty</span>
+        <p class="text-sm text-center text-cyan-100">Gatita astuta pero impulsiva</p>
       </button>
-      <button class="select-char flex flex-col items-center gap-2 p-4 rounded-xl hover:scale-105 transition-transform avatar-chava" data-char="Batt">
-        <img src="BATTT.png" alt="Batt" class="w-14 h-14 rounded-full object-cover border-2 border-pink-400">
-        <span class="text-sm font-semibold">Batt</span>
-        <p class="text-xs text-center text-pink-200">Libre, rompe las reglas y nunca sigue las indicaciones</p>
+
+      <button class="select-char flex flex-col items-center gap-3 p-6 rounded-2xl bg-gradient-to-br from-pink-400/30 to-pink-700/30 border border-pink-400/40 hover:scale-105 hover:shadow-xl hover:border-pink-300 transition-all duration-300" data-char="Batt">
+        <img src="BATTT.png" alt="Batt" class="w-16 h-16 rounded-full object-cover border-2 border-pink-400 shadow-md">
+        <span class="text-lg font-bold text-pink-200">Batt</span>
+        <p class="text-sm text-center text-pink-100">Libre, rompe las reglas y nunca sigue las indicaciones</p>
       </button>
     </div>
   </section>
 
   <!-- Juego -->
-  <section id="game" class="hidden max-w-lg w-full">
+  <section id="game" class="hidden max-w-lg w-full bg-white/5 backdrop-blur-lg p-8 mt-6 rounded-2xl shadow-2xl border border-white/10">
     <div class="flex items-center justify-between mb-6">
-      <div class="flex items-center gap-3">
-        <div id="avatar" class="w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold"></div>
+      <div class="flex items-center gap-4">
+        <div id="avatar" class="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold shadow-inner bg-gray-700"></div>
         <div>
-          <h2 id="charName" class="font-semibold text-lg"></h2>
-          <p>Puntos de juicio: <span id="score" class="text-cyan-300 font-bold">0</span></p>
+          <h2 id="charName" class="font-semibold text-lg text-cyan-200"></h2>
+          <p>Puntos de juicio: <span id="score" class="text-pink-400 font-bold">0</span></p>
         </div>
       </div>
-      <button id="restart" class="px-3 py-1 rounded bg-pink-500 hover:bg-pink-600 transition">Reiniciar</button>
+      <button id="restart" class="px-4 py-2 rounded-xl bg-gradient-to-r from-pink-500 to-pink-700 hover:scale-105 hover:shadow-lg transition-all">🔄 Reiniciar</button>
     </div>
-    <h3 id="sceneTitle" class="text-2xl font-bold mb-4"></h3>
-    <p id="sceneText" class="mb-6"></p>
-    <div id="options" class="flex flex-col gap-3"></div>
+    <h3 id="sceneTitle" class="text-2xl font-extrabold mb-4 text-cyan-300"></h3>
+    <p id="sceneText" class="mb-6 text-gray-200"></p>
+    <div id="options" class="flex flex-col gap-4"></div>
   </section>
 
   <!-- Resultado -->
-  <section id="result" class="hidden max-w-lg w-full text-center">
-    <h2 class="text-3xl font-bold mb-4 text-cyan-300">Resultado Final</h2>
-    <p id="resultText" class="mb-2"></p>
-    <p id="reflection" class="mb-6"></p>
-    <button id="playAgain" class="px-4 py-2 bg-pink-500 rounded hover:bg-pink-600 transition">Jugar otra vez</button>
+  <section id="result" class="hidden max-w-lg w-full text-center bg-white/5 backdrop-blur-lg p-8 mt-6 rounded-2xl shadow-2xl border border-white/10">
+    <h2 class="text-4xl font-extrabold mb-4 text-cyan-400 drop-shadow-md">🏆 Resultado Final</h2>
+    <p id="resultText" class="mb-3 text-lg text-pink-200"></p>
+    <p id="reflection" class="mb-6 text-gray-200 italic"></p>
+    <button id="playAgain" class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-indigo-700 rounded-xl hover:scale-105 hover:shadow-xl transition-all">Jugar otra vez</button>
   </section>
 
   <script src="game.js"></script>
 </body>
 </html>
+
 
